@@ -1,7 +1,12 @@
 {
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
-  "files": [],
+  "compilerOptions": {
+    "moduleResolution": "bundler"
+  },
+  "include": [
+    "api/**/*.ts"
+  ],
   "references": [
     {
       "path": "./lib/db"
