@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "YASI - Invoice Generator"
+version = "1.0.0"
+id = "artifacts/yasi"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18538
+
+[services.development]
+run = "pnpm --filter @workspace/yasi run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/yasi", "run", "build" ]
+publicDir = "artifacts/yasi/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18538"
+BASE_PATH = "/"
